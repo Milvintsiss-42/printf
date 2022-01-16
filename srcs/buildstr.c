@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 19:55:29 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/06 20:33:32 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/16 18:18:15 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	ft_buildstr(char **ret, t_list *lst, int len)
 	char	*str;
 	t_str	s_str;
 
- 	printf("len buildstr: %d\n", len);
 	*ret = malloc(sizeof(char) * (len + 1));
 	if (!*ret)
 		return (0);

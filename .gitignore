@@ -1,3 +1,6 @@
 a.out
 .DS_Store
 .vscode
+printfTester
+test.c
+testprintf.c

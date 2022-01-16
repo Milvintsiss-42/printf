@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 03:25:32 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/07 16:29:38 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/16 18:22:15 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,17 @@
 # include <stdarg.h>
 
 # define STR_NULL "(null)"
-# ifdef __LINUX
+# ifdef __linux__
 #  define PTR_NULL "(nil)"
 # else
 #  define PTR_NULL "(0x0)"
 # endif
+
+# define FLAG_ALTER		0x01
+# define FLAG_SPACE		0x02
+# define FLAG_PLUS		0x04
+# define FLAG_PADR		0x08
+# define FLAG_ZERO		0x16
 
 typedef struct s_str
 {

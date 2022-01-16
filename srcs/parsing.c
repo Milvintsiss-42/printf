@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 18:52:15 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/11 01:59:34 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/16 18:59:28 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,46 @@ static int	ft_parsechar(int *total_len, t_list **print, char c)
 
 static int	ft_parsestring(int *total_len, t_list **print, char *s)
 {
-	int	len;
+	char	*str;
+	int		len;
 
-	len = ft_strlen_c(s, '%');
-	if (!ft_addstr(print, s, len))
+	if (s == NULL)
+		str = STR_NULL;
+	else
+		str = s;
+	len = ft_strlen(str);
+	if (!ft_addstr(print, str, len))
 		return (-1);
 	*total_len += len;
 	return (1);
+}
+
+static int	ft_parseptr(int *total_len, t_list **print, void *ptr)
+{
+	char	*str;
+
+	if (ptr == NULL)
+	{
+		if (!ft_addstr(print, PTR_NULL, ft_strlen(PTR_NULL)))
+			return (-1);
+		*total_len += ft_strlen(PTR_NULL);
+		return (1);
+	}
+	else
+	{
+		str = ft_itoa_base_ul((unsigned long)ptr, HEX_BASE);
+		if (!str)
+			return (-1);
+		if (!ft_addstr(print, "0x", 2)
+			|| !ft_addstr(print, str, ft_strlen(str)))
+		{
+			free(str);
+			return (-1);
+		}
+		*total_len += 2 + ft_strlen(str);
+		free(str);
+		return (1);
+	}
 }
 
 static int	ft_parseint(int *total_len, t_list **print, int n)
@@ -83,13 +116,18 @@ static int	ft_parseint(int *total_len, t_list **print, int n)
 	return (1);
 }
 
-static int	ft_parseunsigned(int *total_len, t_list **print, unsigned int n)
+static int	ft_parseunsignedbase(
+				int *total_len,
+				t_list **print,
+				unsigned int n,
+				const char *base
+				)
 {
 	char	*s;
 	int		len;
 	int		r;
 
-	s = ft_itoa_u(n);
+	s = ft_itoa_base_u(n, base);
 	if (!s)
 		return (-1);
 	len = ft_strlen(s);
@@ -114,8 +152,23 @@ static int	ft_parse2(
 		return (ft_parsechar(total_len, print, (char)va_arg(ap, int)));
 	if (*start == 's')
 		return (ft_parsestring(total_len, print, va_arg(ap, char *)));
+	if (*start == 'p')
+		return (ft_parseptr(total_len, print, va_arg(ap, void *)));
 	if (*start == 'd' || *start == 'i')
 		return (ft_parseint(total_len, print, va_arg(ap, int)));
 	if (*start == 'u')
-		return (ft_parseunsigned(total_len, print, va_arg(ap, unsigned int)));
+		return (ft_parseunsignedbase(total_len, print, va_arg(ap, unsigned int),
+				DEC_BASE));
+	if (*start == 'x')
+		return (ft_parseunsignedbase(total_len, print, va_arg(ap, unsigned int),
+				HEX_BASE));
+	if (*start == 'X')
+		return (ft_parseunsignedbase(total_len, print, va_arg(ap, unsigned int),
+				HEX_BASE_CAPS));
+	return (-1);
 }
+
+// static int ft_parseflags(int *total_len, t_list **print, const char **start)
+// {
+//
+// }
