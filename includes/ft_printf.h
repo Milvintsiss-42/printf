@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 03:25:32 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/24 18:19:33 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/24 23:01:36 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # ifdef __linux__
 #  define PTR_NULL "(nil)"
 # else
-#  define PTR_NULL "(0x0)"
+#  define PTR_NULL "0x0"
 # endif
 
 # define FLAG_ALTER		1
