@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 19:25:33 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/17 19:20:08 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/24 19:12:53 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	ft_addstr_n(t_list **lst, const char *str, size_t len)
 
 int	ft_freestr(t_str *s_str)
 {
-	free(s_str->str);
+	if (s_str)
+		free(s_str->str);
 	free(s_str);
 	return (0);
 }
