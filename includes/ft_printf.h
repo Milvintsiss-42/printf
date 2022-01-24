@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 03:25:32 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/24 23:01:36 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/24 23:06:25 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_mod			ft_handle_args_exceptions(t_mod mod);
 
 int				ft_invalidconversion(t_list **print);
 
-int				ft_parsechar(t_mod mod, t_list **print, char c);
+int				ft_parsechar(t_mod mod, t_list **print, char c, char type);
 int				ft_parsestring(t_mod mod, t_list **print, char *s);
 int				ft_parseptr(t_mod mod, t_list **print, void *ptr);
 int				ft_parseint(t_mod mod, t_list **print, int n);

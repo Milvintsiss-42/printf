@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 18:52:15 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/24 18:18:28 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/24 23:05:14 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ static int	ft_parseconversion(t_mod mod, t_list **print, const char type,
 	va_list ap)
 {
 	if (type == '%')
-		return (ft_parsechar(mod, print, '%'));
+		return (ft_parsechar(mod, print, '%', '%'));
 	if (type == 'c')
-		return (ft_parsechar(mod, print, (char)va_arg(ap, int)));
+		return (ft_parsechar(mod, print, (char)va_arg(ap, int), 'c'));
 	if (type == 's')
 		return (ft_parsestring(mod, print, va_arg(ap, char *)));
 	if (type == 'p')
