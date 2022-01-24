@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 04:23:33 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/10 22:56:08 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:44:47 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	ft_printf2(const char *format, va_list ap, int fd)
 	int		len;
 
 	len = ft_vasprintf2(&str, format, ap);
-	ft_putstr_fd(str, fd);
+	write(fd, str, len);
 	free(str);
 	return (len);
 }
