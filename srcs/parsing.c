@@ -6,7 +6,7 @@
 /*   By: ple-stra <ple-stra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 18:52:15 by ple-stra          #+#    #+#             */
-/*   Updated: 2022/01/24 23:05:14 by ple-stra         ###   ########.fr       */
+/*   Updated: 2022/01/26 13:58:36 by ple-stra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ft_parse(t_list **print, const char *format, va_list ap)
 	int			total_len;
 	int			len_read;
 
-	(void)ap;
 	total_len = 0;
 	while (*format)
 	{
